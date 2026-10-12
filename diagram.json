@@ -1,0 +1,126 @@
+
+{
+  "version": 1,
+  "author": "FarmTech Solutions - Grupo 83",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": 60,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnN",
+      "top": -190,
+      "left": -230,
+      "attrs": {
+        "color": "green",
+        "label": "Nitrogenio (N)",
+        "key": "N",
+        "bounce": "0"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnP",
+      "top": -80,
+      "left": -230,
+      "attrs": {
+        "color": "green",
+        "label": "Fosforo (P)",
+        "key": "P",
+        "bounce": "0"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnK",
+      "top": 30,
+      "left": -230,
+      "attrs": {
+        "color": "green",
+        "label": "Potassio (K)",
+        "key": "K",
+        "bounce": "0"
+      }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr",
+      "top": 180,
+      "left": -220,
+      "attrs": { "lux": "500" }
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht",
+      "top": -180,
+      "left": 350,
+      "attrs": {
+        "temperature": "25",
+        "humidity": "45"
+      }
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay",
+      "top": 80,
+      "left": 350,
+      "attrs": { "transistor": "pnp" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "resistorLed",
+      "top": 95,
+      "left": 535,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledBomba",
+      "top": 100,
+      "left": 660,
+      "attrs": {
+        "color": "blue",
+        "label": "Bomba ligada"
+      }
+    }
+  ],
+  "connections": [
+    ["esp:TX0", "$serialMonitor:RX", "", []],
+    ["esp:RX0", "$serialMonitor:TX", "", []],
+
+    ["btnN:1.l", "esp:D18", "green", []],
+    ["btnN:2.l", "esp:GND.1", "black", []],
+
+    ["btnP:1.l", "esp:D19", "green", []],
+    ["btnP:2.l", "esp:GND.1", "black", []],
+
+    ["btnK:1.l", "esp:D21", "green", []],
+    ["btnK:2.l", "esp:GND.1", "black", []],
+
+    ["ldr:VCC", "esp:3V3", "red", []],
+    ["ldr:GND", "esp:GND.1", "black", []],
+    ["ldr:AO", "esp:D34", "orange", []],
+
+    ["dht:VCC", "esp:3V3", "red", []],
+    ["dht:GND", "esp:GND.2", "black", []],
+    ["dht:SDA", "esp:D15", "blue", []],
+
+    ["relay:VCC", "esp:VIN", "red", []],
+    ["relay:GND", "esp:GND.2", "black", []],
+    ["relay:IN", "esp:D26", "purple", []],
+
+    ["relay:COM", "esp:VIN", "red", []],
+    ["relay:NO", "resistorLed:1", "orange", []],
+    ["resistorLed:2", "ledBomba:A", "orange", []],
+    ["ledBomba:C", "esp:GND.2", "black", []]
+  ],
+  "serialMonitor": {
+    "display": "always"
+  },
+  "dependencies": {}
+}
