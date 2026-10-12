@@ -13,6 +13,22 @@ Representar o monitoramento de uma área de cultivo de tomate e automatizar o ac
 
 O protótipo é acadêmico: os componentes disponíveis no simulador representam grandezas agrícolas, sem realizar análises reais do solo. Os limites adotados são didáticos e não constituem recomendação agronômica para o tomate.
 
+## Cultivo escolhido e necessidades do tomate
+
+O tomate foi escolhido para relacionar a disponibilidade de nutrientes, as condições químicas do solo e o manejo da água. A pesquisa de referência utiliza publicações da Embrapa sobre tomate para industrialização, um contexto de produção em lavoura.
+
+| Fator | Necessidade real da cultura | Representação no protótipo |
+| --- | --- | --- |
+| Nitrogênio (N) | Sua deficiência reduz o crescimento; a exigência é importante nos primeiros estádios de desenvolvimento. [1] | Estado binário de presença ou ausência, alterado pelo botão N. |
+| Fósforo (P) | Sua deficiência prejudica o crescimento e pode atrasar a frutificação. Sua absorção depende também da acidez e da umidade do solo. [1] | Estado binário alterado pelo botão P. |
+| Potássio (K) | É o nutriente mais extraído pelo tomateiro; sua deficiência pode prejudicar o crescimento e a firmeza dos frutos. [1] | Estado binário alterado pelo botão K. |
+| pH | A acidez interfere na disponibilidade e na absorção de nutrientes. A correção do solo depende de análise química. [2] | Leitura do LDR convertida para a escala de 0 a 14. |
+| Água | O manejo deve evitar estresse hídrico, especialmente no florescimento e no crescimento dos frutos, e áreas sujeitas a encharcamento. [1][2] | Umidade do DHT22 usada como entrada didática para ligar e desligar a irrigação. |
+
+Como referência quantitativa, a Embrapa apresenta teores adequados em **análise foliar** de 4,0–6,0% de N, 0,25–0,75% de P e 3,0–5,0% de K, dentro do protocolo de amostragem descrito na publicação. São concentrações nas folhas, não percentuais de umidade nem leituras dos botões. O manejo de adubação considera diagnóstico nutricional, características do solo e histórico da área; não existe uma dose única que os três estados booleanos consigam representar. [3]
+
+Essa pesquisa fundamenta a escolha das variáveis monitoradas. Para demonstrar a decisão no simulador, o grupo adotou a combinação de NPK presente, pH permitido e umidade baixa. A faixa de **pH 5,5–7,5** e os limiares de **55% e 65%** são escolhas de programação: não foram obtidos por calibração agrícola nem equivalem às recomendações quantitativas de adubação da Embrapa. A regra de bloquear a irrigação com nutriente ausente também é uma simplificação do exercício.
+
 ## Organização do projeto
 
 | Arquivo ou pasta | Conteúdo |
@@ -63,6 +79,8 @@ Os botões usam `INPUT_PULLUP`: em repouso, a entrada fica em nível alto; press
 
 Na inicialização, os três nutrientes estão no estado **ausente** e a irrigação está **desligada**. Cada pressão reconhecida de um botão alterna o estado lógico do respectivo nutriente. O estado permanece após soltar o botão e é reiniciado quando a simulação recomeça.
 
+Assim, os nutrientes continuam sendo representados por `true` ou `false`, mas o código usa **alternância por clique**: o estado armazenado do nutriente não corresponde continuamente à posição física pressionada ou solta do botão. Essa implementação permite operar os três botões em sequência.
+
 A função `atualizarBotao()` trata a estabilização da entrada por mais de 35 ms. O `loop()` verifica os botões continuamente, com uma pausa de 10 ms, e chama `controlarIrrigacao()` a cada 2.000 ms de tempo simulado.
 
 A leitura analógica usa resolução de 12 bits, de 0 a 4095. A conversão adotada é:
@@ -102,6 +120,12 @@ O relé PNP recebe `HIGH` para acionar e `LOW` para desligar. Quando acionado, s
 6. Clique no DHT22 e ajuste **Humidity** para experimentar valores abaixo de 55%, entre os limites e a partir de 65%.
 7. Aguarde uma nova leitura antes de avaliar cada resultado. O intervalo de dois segundos refere-se ao tempo da simulação, que pode avançar mais devagar que o relógio real.
 
+### Alteração conjunta de NPK e pH
+
+Durante a demonstração proposta pela atividade, **ao mudar um estado de NPK, ajuste também o LDR manualmente**, representando uma mudança nas condições químicas do solo. Os botões não modificam o LDR por software: são entradas independentes. Não existe uma fórmula no projeto que determine o pH a partir dos três booleanos.
+
+Por exemplo, com umidade de 45%, alterne N para ausente e ajuste o LDR para um pH próximo de 5,0. Depois restaure N e ajuste o pH para aproximadamente 6,5, mantendo P e K presentes. Observe cada atualização no monitor serial. Para demonstrar especificamente o bloqueio por NPK, varie o pH entre dois valores dentro da faixa permitida, como 6,2 e 6,5, enquanto altera um nutriente. Esses valores são entradas de teste e não uma previsão da reação química causada por cada nutriente.
+
 Também é possível reproduzir o projeto em um ambiente Wokwi para ESP32 usando os três arquivos da raiz, juntos e sem alterar as conexões. A biblioteca declarada em `libraries.txt` fornece o cabeçalho `DHTesp.h`; não deve ser substituída por outra biblioteca DHT com interface diferente.
 
 ## Cenários de teste e evidências
@@ -128,6 +152,10 @@ Na execução registrada, o projeto compilou e iniciou no Wokwi. O monitor apres
 - Na faixa de histerese, a mensagem `solo com umidade baixa` pode continuar aparecendo enquanto a saída permanece ligada, mesmo após a umidade atingir 55%. A decisão depende também do estado anterior.
 - As leituras são exibidas no monitor serial. Não há banco de dados, armazenamento persistente, API meteorológica, implementação em Python ou análise em R neste escopo.
 
-## Referência do projeto
+## Referências
 
 [FarmTech Solutions — Grupo 83, circuito original no Wokwi](https://wokwi.com/projects/477646034464742401).
+
+1. EMBRAPA HORTALIÇAS. **Cultivo de tomate para industrialização: deficiências nutricionais**. Sistemas de Produção, 1, 2ª edição, dez. 2006. [Publicação](https://sistemasdeproducao.cnptia.embrapa.br/FontesHTML/Tomate/TomateIndustrial_2ed/deficiencias.htm). Acesso em: 12 out. 2026.
+2. EMBRAPA HORTALIÇAS. **Cultivo de tomate para industrialização: solos**. Sistema de Produção, 1, jan. 2003. [Publicação](https://sistemasdeproducao.cnptia.embrapa.br/FontesHTML/Tomate/TomateIndustrial/solos.htm). Acesso em: 12 out. 2026.
+3. EMBRAPA HORTALIÇAS. **Cultivo de tomate para industrialização: adubação**. Sistemas de Produção, 1, 2ª edição, dez. 2006. [Publicação](https://sistemasdeproducao.cnptia.embrapa.br/FontesHTML/Tomate/TomateIndustrial_2ed/adubacao.htm). Acesso em: 12 out. 2026.

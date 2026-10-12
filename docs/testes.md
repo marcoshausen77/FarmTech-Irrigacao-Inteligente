@@ -8,6 +8,8 @@ Para testar a decisão por umidade, primeiro deixe os três nutrientes presentes
 
 Após cada mudança, aguarde uma nova avaliação, realizada a cada dois segundos de tempo simulado. Uma simulação lenta exige mais tempo real. Confirme no monitor que a pressão do botão foi reconhecida antes de seguir.
 
+Na demonstração da atividade, acompanhe cada alteração de NPK com um ajuste manual do LDR. Para isolar o efeito de um nutriente nos cenários T07 e T08, mude o pH entre valores internos à faixa permitida, por exemplo, de aproximadamente 6,2 para 6,5. Assim, há alteração nas duas entradas e o bloqueio continua sendo atribuível ao NPK. Os valores escolhidos não representam uma relação química calculada entre o nutriente e o pH.
+
 ## Registro de execução
 
 Execução registrada no Wokwi em 12/10/2026, com os arquivos originais do projeto.
@@ -38,8 +40,9 @@ Os resultados abaixo são os **resultados esperados a partir da lógica do códi
 | T11 | Corrigir NPK/pH após um bloqueio, mantendo umidade em 60%. | Continua desligada; só volta a ligar abaixo de 55%. |
 | T12 | Ajustar umidade para exatamente 55%, primeiro vindo do estado ligado e depois do desligado. | Mantém o estado anterior em ambos os casos. |
 | T13 | Reiniciar a simulação após alternar os nutrientes. | Nutrientes voltam a ausentes; saída começa desligada. |
+| T14 | Com P/K presentes e umidade 45%, tornar N ausente e ajustar manualmente o pH para cerca de 5,0; depois restaurar N e pH próximo de 6,5. | Primeiro desliga, com prioridade da mensagem de NPK; depois liga quando todas as condições ficam permitidas. |
 
-O código também prevê desligamento quando a umidade retorna `NaN`. A falha não foi injetada nesta execução e não há evidência de teste correspondente. Não é necessário alterar o circuito original para reproduzir os cenários T01–T13.
+O código também prevê desligamento quando a umidade retorna `NaN`. A falha não foi injetada nesta execução e não há evidência de teste correspondente. Não é necessário alterar o circuito original para reproduzir os cenários T01–T14.
 
 ## Cuidados na interpretação
 
