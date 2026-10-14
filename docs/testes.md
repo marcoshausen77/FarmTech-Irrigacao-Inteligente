@@ -12,7 +12,7 @@ Na demonstração da atividade, acompanhe cada alteração de NPK com um ajuste 
 
 ## Registro de execução
 
-Execução registrada no Wokwi em 12/10/2026, com os arquivos originais do projeto.
+Execução registrada no Wokwi em 12/10/2026, com os arquivos originais do projeto. A identificação da entrega foi corrigida posteriormente para Grupo 77. O registro serial e as capturas preservam a identificação usada na execução, Grupo 83; a lógica e as conexões permanecem iguais.
 
 | Verificação executada | Resultado observado | Evidência |
 | --- | --- | --- |

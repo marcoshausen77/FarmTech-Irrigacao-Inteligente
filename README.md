@@ -1,11 +1,26 @@
 # FarmTech Solutions — Irrigação Inteligente
 
-**FIAP · Projeto 2 — Iniciando a Coleta de Dados · Grupo 83**  
+**FIAP · Projeto 2 — Iniciando a Coleta de Dados · Grupo 77**  
 **Cultivo escolhido: tomate**
 
 Protótipo de irrigação com ESP32 que reúne entradas simuladas de nutrientes, pH e umidade para decidir quando acionar um relé. O projeto demonstra a coleta de dados e a tomada de decisão em um sistema embarcado aplicado à agricultura.
 
 **[Abrir o circuito no Wokwi](https://wokwi.com/projects/477646034464742401)**
+
+## Integrantes — Grupo 77
+
+| Integrante | RM |
+| --- | --- |
+| Bernardo Akin Chiusoli Mendes | 576239 |
+| Kelly | 576289 |
+| Murilo | 576622 |
+| Marcos Rodrigues Czerner Hausen | 576709 |
+| Vanira Alves da Silva | 574654 |
+
+## Vídeo de demonstração
+
+**[Assistir à demonstração no YouTube](https://youtu.be/kmIAH3_Zi18)**  
+Duração: **1 minuto e 49 segundos**. Visibilidade: **não listado**.
 
 ## Objetivo
 
@@ -33,15 +48,15 @@ Essa pesquisa fundamenta a escolha das variáveis monitoradas. Para demonstrar a
 
 | Arquivo ou pasta | Conteúdo |
 | --- | --- |
-| [sketch.ino](sketch.ino) | Código C/C++ original do projeto Wokwi, para ESP32 com framework Arduino. |
-| [diagram.json](diagram.json) | Componentes, posicionamento, conexões e configurações originais do circuito. |
+| [sketch.ino](sketch.ino) | Código C/C++ do projeto Wokwi, para ESP32 com framework Arduino, com identificação do Grupo 77. |
+| [diagram.json](diagram.json) | Componentes, posicionamento, conexões e configurações do circuito, com autoria do Grupo 77. |
 | [libraries.txt](libraries.txt) | Dependência utilizada pelo simulador: DHT sensor library for ESPx. |
 | [docs/testes.md](docs/testes.md) | Procedimento de reprodução, cenários e registro da execução observada. |
 | [docs/imagens](docs/imagens) | Capturas reais da interface do Wokwi. |
 | [docs/registros/monitor-serial.txt](docs/registros/monitor-serial.txt) | Saída do monitor serial capturada durante a execução. |
 | [docs/roteiro-video.md](docs/roteiro-video.md) | Sequência sugerida para apresentar o funcionamento do protótipo. |
 
-Os três arquivos do circuito foram extraídos do [projeto original](https://wokwi.com/projects/477646034464742401), mantendo seu conteúdo e suas conexões.
+Os três arquivos do circuito foram extraídos do [projeto original](https://wokwi.com/projects/477646034464742401), preservando a lógica, os componentes e as conexões. A identificação textual do grupo no código e na autoria do diagrama foi atualizada para Grupo 77.
 
 ## Componentes e representação dos sensores
 
@@ -134,6 +149,8 @@ O [documento de testes](docs/testes.md) detalha os cenários de ativação, desa
 
 Na execução registrada, o projeto compilou e iniciou no Wokwi. O monitor apresentou **N, P e K ausentes, pH 3,42, umidade 45,0% e irrigação desligada**, com a mensagem `Motivo: verificar NPK.`. A saída capturada está em [monitor-serial.txt](docs/registros/monitor-serial.txt). Esse registro comprova a inicialização e o bloqueio no estado inicial; não comprova isoladamente todos os cenários descritos.
 
+As capturas e o registro serial de 12/10/2026 documentam a execução anterior à correção da identificação para **Grupo 77**. Por isso, podem exibir “Grupo 83”. São registros históricos do mesmo circuito; a mudança de identificação não altera o funcionamento.
+
 ### Circuito e ajuste do LDR
 
 ![Circuito original no Wokwi, com ESP32, botões NPK, LDR, DHT22 e saída por relé.](docs/imagens/01-circuito-wokwi.jpg)
@@ -154,7 +171,7 @@ Na execução registrada, o projeto compilou e iniciou no Wokwi. O monitor apres
 
 ## Referências
 
-[FarmTech Solutions — Grupo 83, circuito original no Wokwi](https://wokwi.com/projects/477646034464742401).
+[FarmTech Solutions — circuito de origem no Wokwi](https://wokwi.com/projects/477646034464742401).
 
 1. EMBRAPA HORTALIÇAS. **Cultivo de tomate para industrialização: deficiências nutricionais**. Sistemas de Produção, 1, 2ª edição, dez. 2006. [Publicação](https://sistemasdeproducao.cnptia.embrapa.br/FontesHTML/Tomate/TomateIndustrial_2ed/deficiencias.htm). Acesso em: 12 out. 2026.
 2. EMBRAPA HORTALIÇAS. **Cultivo de tomate para industrialização: solos**. Sistema de Produção, 1, jan. 2003. [Publicação](https://sistemasdeproducao.cnptia.embrapa.br/FontesHTML/Tomate/TomateIndustrial/solos.htm). Acesso em: 12 out. 2026.

@@ -3,7 +3,7 @@
 #include <DHTesp.h>
 #include <math.h>
 
-// FarmTech Solutions - Grupo 83
+// FarmTech Solutions - Grupo 77
 // Projeto 2: Irrigacao Inteligente
 // Cultura escolhida: tomate
 // Sensores simulados para fins academicos
@@ -142,7 +142,7 @@ void setup() {
 
   dht.setup(PIN_DHT, DHTesp::DHT22);
 
-  Serial.println("FarmTech Solutions - Grupo 83");
+  Serial.println("FarmTech Solutions - Grupo 77");
   Serial.println("Sistema de irrigacao iniciado.");
   Serial.println("Clique nos botoes para alternar N, P e K.");
   Serial.println("Altere o LDR para simular o pH.");

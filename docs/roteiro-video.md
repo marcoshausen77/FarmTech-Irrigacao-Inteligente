@@ -1,10 +1,12 @@
 # Roteiro de demonstração
 
-O vídeo da entrega deve ter **até 5 minutos**, ser publicado no **YouTube como não listado** e ter seu link incluído no README do repositório. A sequência abaixo reserva aproximadamente 4 minutos e 40 segundos para a apresentação.
+Vídeo da entrega: **[FarmTech Solutions — Irrigação inteligente com ESP32](https://youtu.be/kmIAH3_Zi18)**, com **1 minuto e 49 segundos**, publicado como **não listado**.
+
+A sequência abaixo é um roteiro de apoio para uma apresentação de até 5 minutos, não uma transcrição ou indicação dos tempos do vídeo publicado.
 
 | Tempo sugerido | Conteúdo |
 | --- | --- |
-| 0:00–0:25 | Identificação do Grupo 83, objetivo e cultivo de tomate. |
+| 0:00–0:25 | Identificação do Grupo 77, objetivo e cultivo de tomate. |
 | 0:25–1:05 | Circuito, conexões e caráter simulado dos sensores. |
 | 1:05–1:40 | Pesquisa sobre o tomate e regras do código. |
 | 1:40–2:20 | Estado inicial, ajuste de NPK e LDR, acionamento com umidade baixa. |
@@ -14,7 +16,7 @@ O vídeo da entrega deve ter **até 5 minutos**, ser publicado no **YouTube como
 
 ## Sequência sugerida
 
-1. Apresente a FarmTech Solutions, o Grupo 83, o Projeto 2 — Iniciando a Coleta de Dados e o cultivo de tomate.
+1. Apresente a FarmTech Solutions, o Grupo 77, o Projeto 2 — Iniciando a Coleta de Dados e o cultivo de tomate.
 2. Mostre o circuito completo: ESP32, três botões verdes de NPK, LDR, DHT22, relé, resistor e LED azul que representa a bomba.
 3. Explique que os componentes representam grandezas agrícolas: o LDR não mede pH real, o DHT22 não mede umidade do solo e os botões não medem concentração de nutrientes.
 4. Resuma a importância de NPK, pH e água para o tomate usando as referências da Embrapa no README. Mostre no código os pinos, a conversão analógica para pH, os limites 5,5–7,5 e os limiares de umidade de 55% e 65%. Diferencie a pesquisa agronômica dos limites didáticos adotados.
