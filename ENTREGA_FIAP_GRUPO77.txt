@@ -1,0 +1,9 @@
+FIAP — FarmTech Solutions
+Projeto 2 — Iniciando a Coleta de Dados
+Grupo 77
+
+Repositório GitHub:
+https://github.com/marcoshausen77/FarmTech-Irrigacao-Inteligente
+
+Vídeo demonstrativo no YouTube:
+https://youtu.be/kmIAH3_Zi18
