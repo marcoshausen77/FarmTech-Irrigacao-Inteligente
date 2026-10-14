@@ -12,7 +12,7 @@ Protótipo de irrigação com ESP32 que reúne entradas simuladas de nutrientes,
 | Integrante | RM |
 | --- | --- |
 | Bernardo Akin Chiusoli Mendes | 576239 |
-| Kelly | 576289 |
+| Kelly Mendonça Pereira | 576289 |
 | Murilo | 576622 |
 | Marcos Rodrigues Czerner Hausen | 576709 |
 | Vanira Alves da Silva | 574654 |
